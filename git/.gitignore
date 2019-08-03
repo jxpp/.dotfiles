@@ -1,0 +1,14 @@
+# python
+.venv/
+__pycache__
+
+# vim
+session.vim
+*.swp
+*.swo
+
+# javascript
+node_modules
+
+# mercurial
+*.hg

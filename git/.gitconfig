@@ -1,0 +1,11 @@
+[user]
+	name = jxpp
+	email = jesus@jxpp.eu
+	signingkey = jesus@jxpp.eu
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore
+[merge]
+	tool = vimdiff
+[commit]
+	gpgsign = true

@@ -1,0 +1,31 @@
+# Django snippets
+snippet form
+	class ${1:modelname}Form(models.ModelForm):
+		
+		class Meta:
+			model = $1
+			# exclude = ()
+			# fields = ()
+			${0}
+snippet view
+	def ${1:fname}(request${2:}):
+		
+		if request.method == "POST":
+			form = ${3:form_name}(request.post)
+			if form.is_valid():
+				${4:model_name} = form.save(commit=False)
+				
+				$4.save()
+				return redirect("${5}")
+		else:
+			form = $3()
+
+		return render(request, "${6}", {${7}})
+		${0}
+# Flask snippets
+snippet appr
+	@${1:app}.route("/${2:route}")
+	def ${3:fname}(${4:*args, **kwargs}):
+		${5:pass}
+		return ${6:None}
+		${0}
