@@ -56,6 +56,11 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# xst workaround
+if [ "$(ps -o comm= -q $(ps -q $$ -o ppid=))" = 'xst' ]; then
+    bindkey "^[[A" history-beginning-search-backward
+    bindkey "^[[B" history-beginning-search-forward
+fi
 # User configuration
 
 export MANPATH="/usr/local/man:$MANPATH"
