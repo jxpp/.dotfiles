@@ -30,8 +30,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " automáticamente términos de otros ficheros que estén en la misma estructura
 " de directorio y si tienen documentación te la muestra directamente en una
 " ventana aparte
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'deoplete-plugins/deoplete-jedi'
 
 " Para autocrear html y css. Magia negra.
 Plugin 'mattn/emmet-vim'
@@ -51,10 +52,6 @@ Plugin 'junegunn/vim-emoji'
 " For writing
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/goyo.vim'
-
-" colourscheme
-"
-Plugin 'nightsense/cosmic_latte'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -206,14 +203,9 @@ nnoremap <S-l> $
 
 hi Search cterm=NONE ctermfg=16 ctermbg=lightmagenta
 
-inoremap ' "
-inoremap " '
-
 command! -range Emojify <line1>,<line2>s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 
 nnoremap <leader>ee :%Emojify<CR>
-
-set pastetoggle=<C-p>
 
 highlight todoGroup ctermfg=15 ctermbg=red
 match todoGroup /TODO:.*:.*:(.*):\?/
@@ -264,3 +256,10 @@ highlight LineNr ctermfg=lightgrey
 set numberwidth=3
 
 hi Visual ctermfg=black ctermbg=white
+
+let g:python3_host_prog = '/home/jesus/.config/nvim/.venv/bin/python'
+
+let g:deoplete#enable_at_startup = 1
+
+hi Pmenu ctermfg=black ctermbg=white
+hi PmenuSel ctermfg=black ctermbg=darkgrey
