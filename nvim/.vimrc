@@ -235,10 +235,6 @@ let g:netrw_liststyle = 3
 
 " Remap the enter key to select current option in completion popup
 inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
-" Trigger omnicompletion on Ctrl+Space
-inoremap <C-space> <C-x><C-o>
-
-inoremap -- —
 
 function! s:goyo_enter()
     set noshowmode
