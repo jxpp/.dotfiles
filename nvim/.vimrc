@@ -247,7 +247,7 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 
 set fo-=t
 
-set nu
+set relativenumber
 highlight LineNr ctermfg=lightgrey
 set numberwidth=3
 

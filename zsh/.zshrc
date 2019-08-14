@@ -72,17 +72,38 @@ setopt CORRECT
 setopt HIST_FIND_NO_DUPS
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
+export VISUAL=$EDITO
 export KEYTIMEOUT=1
 
 alias t="tmux -2 new-session -A -s"
 
 alias qkup="sudo apt update && sudo apt dist-upgrade -y && sudo apt autoremove -y"
 
-alias vc="virtualenv -p python3 .venv"
-alias v="source .venv/bin/activate"
-alias vvc="vc && v; if [ -e requirements.txt ]; then pip install -r requirements.txt; fi"
 
+function venvname {
+    echo "$(pwd | perl -pe "s|$HOME/||" | perl -pe 's|/|\.|g')";
+}
+
+function v {
+    source $HOME/.venvs/$(venvname)/bin/activate
+}
+
+function vc {
+    VNAME="$(venvname)";
+    VENV="$HOME/.venvs/$VNAME";
+
+    if [ $1 ]; then
+        echo "❤  Initializing virtual environment $VNAME with Python $1";
+        virtualenv --clear -p python${1} $VENV -q;
+    else
+        echo "❤ Initializing virtual environment $VNAME with $(python3 -V)";
+        virtualenv --clear -p python3 $VENV -q;
+    fi
+
+    source $VENV/bin/activate;
+}
+
+alias vvc="vc; if [ -e requirements.txt ]; then pip install -r requirements.txt; fi"
 
 
 setopt hist_ignore_dups
@@ -123,10 +144,6 @@ j() {
 alias jf='(cd $JOURNAL_DIR && nvim $(fzf) +Goyo)'
 alias ja='(cd $JOURNAL_DIR && nvim +Ag!)'
 alias dt='(cd $HOME/.diary && nvim $(date -I).md)'
-
-here() {
-    (cat >> $1)
-}
 
 export ENTRY_DIR="$HOME/"
 alias entry="$EDITOR .entries/$(date -Is) +'set ft=markdown'"
