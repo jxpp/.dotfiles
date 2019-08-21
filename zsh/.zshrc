@@ -92,12 +92,18 @@ function vc {
     VNAME="$(venvname)";
     VENV="$HOME/.venvs/$VNAME";
 
+    if [ -e $VENV ]; then
+        echo "❤  Virtual environment $VNAME already exists, activating.";
+        source $VENV/bin/activate;
+        return;
+    fi
+
     if [ $1 ]; then
-        echo "❤  Initializing virtual environment $VNAME with Python $1";
-        virtualenv --clear -p python${1} $VENV -q;
+        echo "❤  Initializing virtual environment $VNAME with Python $1.";
+        virtualenv -p python${1} $VENV -q;
     else
-        echo "❤ Initializing virtual environment $VNAME with $(python3 -V)";
-        virtualenv --clear -p python3 $VENV -q;
+        echo "❤ Initializing virtual environment $VNAME with $(python3 -V).";
+        virtualenv -p python3 $VENV -q;
     fi
 
     source $VENV/bin/activate;

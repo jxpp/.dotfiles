@@ -6,6 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+"
+Plugin 'simonhicks/foxdot.vim'
+Plugin 'supercollider/scvim'
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -212,8 +215,6 @@ match todoGroup /TODO:.*:.*:(.*):\?/
 
 nnoremap <leader>a :Ag<CR>
 
-let g:jedi#show_call_signatures = 2
-let g:jedi#use_splits_not_buffers = 'winwidth'
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -259,3 +260,16 @@ let g:deoplete#enable_at_startup = 1
 
 hi Pmenu ctermfg=black ctermbg=white
 hi PmenuSel ctermfg=black ctermbg=darkgrey
+
+let g:sclang_executable_path = '/usr/bin/sclang'
+let g:python_executable_path = '/usr/bin/python3.7'
+
+let g:sclangTerm = "xst"
+let g:scFlash = 1
+
+let g:jedi#show_call_signatures = 1
+let g:jedi#popup_select_first = 1
+let g:jedi#show_call_signatures_delay = 0
+let g:jedi#use_tabs_not_buffers = 1
+
+set scrolloff=10
