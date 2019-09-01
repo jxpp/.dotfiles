@@ -6,7 +6,7 @@ URxvt*scrollTtyKeypress: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollBar: false
 URxvt*mouseWheelScrollPage: true
-URxvt*fading: 5
+URxvt*fading: 0
 ! URxvt*.color0: #1a1a1a
 ! URxvt*.color1: #f4005f
 ! URxvt*.color2: #98e024
@@ -23,11 +23,11 @@ URxvt*fading: 5
 ! URxvt*.color13: #f4005f
 ! URxvt*.color14: #58d1eb
 ! URxvt*.color15: #f6f6ef
-URxvt*font: xft:Anonymous Pro:pixelsize:9
+URxvt*font: xft:Anonymous Pro:pixelsize=24
 st.shell: /usr/bin/zsh
 st.xfps: 60
-st.actionfps: 30
-st.font: Iosevka SS02:pixelsize=16
+st.actionfps: 60
+st.font: Iosevka Slab:pixelsize=15
 URxvt*saveLines: 8192
 URxvt*buffered: true
 URxvt*hold: false

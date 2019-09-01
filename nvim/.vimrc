@@ -53,8 +53,9 @@ Plugin 'junegunn/vim-emoji'
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/goyo.vim'
 
-Plugin 'supercollider/scvim'
-Plugin 'simonhicks/foxdot.vim'
+Plugin 'vim-syntastic/syntastic'
+
+Plugin 'ervandew/supertab'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -139,6 +140,9 @@ autocmd FileType html,htmldjango,css,scss,markdown,c,cpp,json,yaml,javascript se
 let g:user_emmet_install_global = 0
 autocmd FileType html,htmldjango,css,scss,markdown EmmetInstall
 
+autocmd FileType python inoremap ' "
+autocmd FileType python inoremap " '
+
 " Opciones para tomar apuntes. En ciertos formatos automáticamente cambiará de
 " línea al llegar a las 80 columnas de texto. De resto permitirá ajustar texto
 " a 80 columnas mediante el shortcut gq.
@@ -163,8 +167,7 @@ set wildmenu
 
 set rtp+=~/.fzf
 
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>g :GFiles<cr>
+nnoremap <leader>f :GFiles<cr>
 
 nnoremap <F5> :!make run<cr>
 
@@ -173,30 +176,23 @@ set tags=.tags
 " Lo siguiente es para syntastic, un correcto de sintaxis. Estas opciones son
 " todas muy buenas si lo usas. Cada vez que guardas un fichero te muestra
 " errores de sintáxis.
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_checkers_args = '-c ~/.config/flake8'
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers_args = '--rcfile=~/.pylint'
 let g:syntastic_enable_balloons = 1
 let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": [] }
-nnoremap <leader>s :SyntasticCheck<CR>
-
-"set cursorline
-nnoremap <Leader>c :set cursorline! <CR>
-"hi CursorLine cterm=inverse ctermbg=NONE ctermfg=NONE guibg=darkred guifg=white
+            \ "mode": "passive",
+            \ "active_filetypes": [],
+            \ "passive_filetypes": [] }
 
 nnoremap <Leader>h :noh <CR>
-
-inoremap <C-s> <Esc>:w<CR>a
 
 nnoremap ; :
 nnoremap : ;
@@ -260,6 +256,7 @@ let g:deoplete#enable_at_startup = 1
 
 hi Pmenu ctermfg=black ctermbg=white
 hi PmenuSel ctermfg=black ctermbg=darkgrey
+hi PmenuThumb ctermfg=black ctermbg=white
 
 let g:sclang_executable_path = '/usr/bin/sclang'
 let g:python_executable_path = '/usr/bin/python3.7'
@@ -267,7 +264,7 @@ let g:python_executable_path = '/usr/bin/python3.7'
 let g:sclangTerm = "xst"
 let g:scFlash = 1
 
-let g:jedi#show_call_signatures = 1
+let g:jedi#show_call_signatures = 2
 let g:jedi#popup_select_first = 1
 let g:jedi#show_call_signatures_delay = 0
 let g:jedi#use_tabs_not_buffers = 1
