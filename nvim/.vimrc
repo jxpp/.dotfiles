@@ -7,9 +7,6 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 "
-Plugin 'simonhicks/foxdot.vim'
-Plugin 'supercollider/scvim'
-
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -55,6 +52,9 @@ Plugin 'junegunn/vim-emoji'
 " For writing
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/goyo.vim'
+
+Plugin 'supercollider/scvim'
+Plugin 'simonhicks/foxdot.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -254,7 +254,7 @@ set numberwidth=3
 
 hi Visual ctermfg=black ctermbg=white
 
-let g:python3_host_prog = '/home/jesus/.config/nvim/.venv/bin/python'
+let g:python3_host_prog = '/home/jxpp/.config/nvim/.venv/bin/python'
 
 let g:deoplete#enable_at_startup = 1
 

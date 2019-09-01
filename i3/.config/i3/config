@@ -44,12 +44,14 @@ bindsym $mod+d exec rofi -show drun
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-exec --no-startup-id sh /home/jesus/.scripts/fixkb.sh
+exec --no-startup-id sh /home/jxpp/.scripts/fixkb.sh
 exec --no-startup-id urxvtd
 exec --no-startup-id feh --bg-fill $HOME/.config/wall.png
 exec --no-startup-id unclutter -keystroke
 exec --no-startup-id thunar --daemon
-exec --no-startup-id compton -b
+exec --no-startup-id compton
+exec --no-startup-id synclient TapButton1=0
+exec --no-startup-id synclient TapButton2=0
 
 # change focus
 bindsym $mod+h focus left
@@ -174,9 +176,9 @@ bar {
 
 for_window [class="^.*"] border pixel 0
 
-gaps inner 5
-smart_gaps on
-smart_borders no_gaps
+gaps outer 8
+gaps inner 8
+#smart_gaps on
 
 # colours
 # class                 border  backgr. text    indicator child_border

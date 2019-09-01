@@ -27,7 +27,7 @@ URxvt*font: xft:Anonymous Pro:pixelsize:9
 st.shell: /usr/bin/zsh
 st.xfps: 60
 st.actionfps: 30
-st.font: Anonymous Pro:pixelsize=14
+st.font: Iosevka SS02:pixelsize=16
 URxvt*saveLines: 8192
 URxvt*buffered: true
 URxvt*hold: false

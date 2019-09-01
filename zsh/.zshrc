@@ -153,3 +153,5 @@ alias dt='(cd $HOME/.diary && nvim $(date -I).md)'
 
 export ENTRY_DIR="$HOME/"
 alias entry="$EDITOR .entries/$(date -Is) +'set ft=markdown'"
+
+alias fd=fdfind

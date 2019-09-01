@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-30+20"
+    geometry = "300x5-40-40"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -86,7 +86,7 @@
 
     ### Text ###
 
-    font = Anonymous Pro 11
+    font = Iosevka SS02 16
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -282,7 +282,7 @@
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#fff8e7"
+    background = "#f9eac7"
     foreground = "#364850"
     timeout = 10
     # Icon for notifications with normal urgency, uncomment to enable
