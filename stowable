@@ -1,6 +1,8 @@
 git
 i3
 kitty
+mpd
+ncmpcpp
 nvim
 tmux
 urxvt
