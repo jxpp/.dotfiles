@@ -63,7 +63,6 @@ visualizer_output_name = "mpd_fifo"
 ## If you set format to 44100:16:2, make it 'yes'.
 ##
 visualizer_in_stereo = yes
-visualizer_sample_multiplier = 2
 #
 ##
 ## Note: Below parameter defines how often ncmpcpp has to "synchronize"

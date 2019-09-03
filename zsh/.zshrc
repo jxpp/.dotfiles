@@ -121,6 +121,8 @@ setopt hist_reduce_blanks
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
 
 alias vf='nvim $(fzf)'
+
+alias fd='fdfind'
 export FZF_DEFAULT_COMMAND="fd . ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
@@ -154,7 +156,8 @@ alias dt='(cd $HOME/.diary && nvim $(date -I).md)'
 export ENTRY_DIR="$HOME/"
 alias entry="$EDITOR .entries/$(date -Is) +'set ft=markdown'"
 
-alias fd=fdfind
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+alias m='ncmpcpp --screen visualizer'

@@ -543,3 +543,15 @@
 #
 def_key "9"
   show_help
+
+def_key "k"
+  scroll_up
+
+def_key "j"
+  scroll_down
+
+def_key "h"
+  previous_column
+
+def_key "l"
+  next_column
