@@ -53,9 +53,13 @@ Plugin 'junegunn/vim-emoji'
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/goyo.vim'
 
-Plugin 'vim-syntastic/syntastic'
+Plugin 'dense-analysis/ale'
+
+" Plugin 'numirias/semshi'
 
 Plugin 'ervandew/supertab'
+
+Plugin 'supercollider/scvim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -180,17 +184,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_checkers_args = '--rcfile=~/.pylint'
-let g:syntastic_enable_balloons = 1
-let g:syntastic_mode_map = {
-            \ "mode": "passive",
-            \ "active_filetypes": [],
-            \ "passive_filetypes": [] }
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_enable_balloons = 1
+" let g:syntastic_mode_map = {
+"             \ "mode": "passive",
+"             \ "active_filetypes": [],
+"             \ "passive_filetypes": [] }
 
 nnoremap <Leader>h :noh <CR>
 
@@ -251,6 +254,7 @@ set numberwidth=3
 hi Visual ctermfg=black ctermbg=white
 
 let g:python3_host_prog = '/home/jxpp/.config/nvim/.venv/bin/python'
+let g:python2_host_prog = '/home/jxpp/.config/nvim/.venv2/bin/python'
 
 let g:deoplete#enable_at_startup = 1
 
@@ -259,7 +263,7 @@ hi PmenuSel ctermfg=black ctermbg=darkgrey
 hi PmenuThumb ctermfg=black ctermbg=white
 
 let g:sclang_executable_path = '/usr/bin/sclang'
-let g:python_executable_path = '/usr/bin/python3.7'
+let g:python_executable_path = '/usr/bin/python'
 
 let g:sclangTerm = "xst"
 let g:scFlash = 1
@@ -270,3 +274,12 @@ let g:jedi#show_call_signatures_delay = 0
 let g:jedi#use_tabs_not_buffers = 1
 
 set scrolloff=10
+
+let g:ale_linters= {
+\ 'python': ['pylint'],
+\}
+
+let g:ale_set_highlights = 0
+let g:airline#extensions#ale#enabled = 1
+let g:deoplete#auto_complete_delay = 100
+highlight SignColumn ctermbg=black

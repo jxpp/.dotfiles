@@ -32,12 +32,12 @@ URxvt*saveLines: 8192
 URxvt*buffered: true
 URxvt*hold: false
 URxvt*internalBorder:
-URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
 URxvt*perl-ext-common:default
 URxvt*perl-ext:
 URxvt*lineSpace: 6
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Shift-Alt-V: eval:paste_clipboard
+URxvt.keysym.Shift-Alt-C: eval:selection_to_clipboard
 URxvt*iso14755: False
 URxvt*iso14755_52: False
 
