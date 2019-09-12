@@ -72,7 +72,7 @@ setopt CORRECT
 setopt HIST_FIND_NO_DUPS
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
-export VISUAL=$EDITO
+export VISUAL=$EDITOR
 export KEYTIMEOUT=1
 
 alias t="tmux -2 new-session -A -s"
@@ -161,3 +161,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 alias m='ncmpcpp --screen visualizer'
+
+# I hate npm
+export PATH=~/.npm-global/bin:$PATH

@@ -265,7 +265,7 @@ hi PmenuThumb ctermfg=black ctermbg=white
 let g:sclang_executable_path = '/usr/bin/sclang'
 let g:python_executable_path = '/usr/bin/python'
 
-let g:sclangTerm = "xst"
+let g:sclangTerm = "urxvt"
 let g:scFlash = 1
 
 let g:jedi#show_call_signatures = 2

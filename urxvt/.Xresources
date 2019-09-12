@@ -1,4 +1,6 @@
+Xft.dpi: 96
 URxvt*termName: screen-256color
+URxvt*depth: 32
 URxvt*geometry: 80x24
 URxvt*loginShell: true
 URxvt*scrollstyle: plain
@@ -6,7 +8,7 @@ URxvt*scrollTtyKeypress: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollBar: false
 URxvt*mouseWheelScrollPage: true
-URxvt*fading: 0
+! URxvt*fading: 0
 ! URxvt*.color0: #1a1a1a
 ! URxvt*.color1: #f4005f
 ! URxvt*.color2: #98e024
@@ -23,7 +25,7 @@ URxvt*fading: 0
 ! URxvt*.color13: #f4005f
 ! URxvt*.color14: #58d1eb
 ! URxvt*.color15: #f6f6ef
-URxvt*font: xft:Anonymous Pro:pixelsize=24
+URxvt*font: xft:Iosevka Slab:antialias=True:pixelsize=15,xft:Noto Color Emoji,xft:Symbola
 st.shell: /usr/bin/zsh
 st.xfps: 60
 st.actionfps: 60
@@ -32,14 +34,18 @@ URxvt*saveLines: 8192
 URxvt*buffered: true
 URxvt*hold: false
 URxvt*internalBorder:
+URxvt*externalBorder: 10
 ! URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
-URxvt*perl-ext-common:default
+URxvt*perl-ext-common: selection-to-clipboard
 URxvt*perl-ext:
-URxvt*lineSpace: 6
-URxvt.keysym.Shift-Alt-V: eval:paste_clipboard
-URxvt.keysym.Shift-Alt-C: eval:selection_to_clipboard
+URxvt*lineSpace:
+URxvt.keysym.Shift-Ctrl-V: eval:paste_clipboard
+URxvt.keysym.Shift-Ctrl-C: eval:selection_to_clipboard
 URxvt*iso14755: False
 URxvt*iso14755_52: False
+URxvt*skipBuiltinGlyphs: True
+URxvt*borderLess: false
+URxvt*cursorBlink: True
 
 #define black_normal #fff8e7
 #define red___normal #c44756

@@ -30,7 +30,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec xst
+bindsym $mod+Return exec urxvt
 bindsym $mod+b exec firefox -P
 bindsym $mod+m exec thunderbird
 bindsym $mod+t exec telegram-desktop
@@ -44,7 +44,7 @@ bindsym $mod+d exec rofi -show drun
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-exec --no-startup-id sh /home/jxpp/.scripts/fixkb.sh
+exec --no-startup-id sh ~/.scripts/fixkb.sh
 exec --no-startup-id urxvtd
 exec --no-startup-id feh --bg-fill $HOME/.config/wall.png
 exec --no-startup-id unclutter -keystroke
