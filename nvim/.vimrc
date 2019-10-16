@@ -26,6 +26,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'majutsushi/tagbar'
+
 " Autocompletador. Vas escribiendo y te muestra opciones. Reconoce
 " automáticamente términos de otros ficheros que estén en la misma estructura
 " de directorio y si tienen documentación te la muestra directamente en una
@@ -60,6 +62,8 @@ Plugin 'dense-analysis/ale'
 Plugin 'ervandew/supertab'
 
 Plugin 'supercollider/scvim'
+
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -173,7 +177,7 @@ set rtp+=~/.fzf
 
 nnoremap <leader>f :GFiles<cr>
 
-nnoremap <F5> :!make run<cr>
+nnoremap <leader>t :Tagbar<cr>
 
 set tags=.tags
 
@@ -212,6 +216,13 @@ nnoremap <leader>ee :%Emojify<CR>
 highlight todoGroup ctermfg=15 ctermbg=red
 match todoGroup /TODO:.*:.*:(.*):\?/
 
+highlight warnnn cterm=bold ctermfg=darkred
+match warnnn /^\[!\].*/
+
+highlight highlightedPhrase cterm=underline ctermfg=blue
+match highlightedPhrase /^·.*/
+
+
 nnoremap <leader>a :Ag<CR>
 
 
@@ -237,7 +248,7 @@ let g:netrw_liststyle = 3
 inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<CR>'
 
 function! s:goyo_enter()
-    set noshowmode
+    " set noshowmode
     set noshowcmd
     set scrolloff=999
     set laststatus=0
@@ -283,3 +294,14 @@ let g:ale_set_highlights = 0
 let g:airline#extensions#ale#enabled = 1
 let g:deoplete#auto_complete_delay = 100
 highlight SignColumn ctermbg=black
+
+" custom syntax rules
+au BufRead,BufNewFile *.note set filetype=notes
+au BufRead,BufNewFile *.log set filetype=log
+
+" NERDTree stuff
+nnoremap <C-n> :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif

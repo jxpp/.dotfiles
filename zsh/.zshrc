@@ -164,3 +164,10 @@ alias m='ncmpcpp --screen visualizer'
 
 # I hate npm
 export PATH=~/.npm-global/bin:$PATH
+
+alias gcpv='git commit -p -v'
+
+jxp() {
+    python3 $HOME/log/.scripts/jxp.py $@
+    nvim $HOME/log/$(date -I).md +PencilHard
+}
