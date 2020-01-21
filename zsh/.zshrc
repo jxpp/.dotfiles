@@ -61,15 +61,16 @@ if [ "$(ps -o comm= -q $(ps -q $$ -o ppid=))" = 'xst' ]; then
     bindkey "^[[A" history-beginning-search-backward
     bindkey "^[[B" history-beginning-search-forward
 fi
-# User configuration
 
+# User configuration
 export MANPATH="/usr/local/man:$MANPATH"
 
 export LANG=en_US.UTF-8
 
-export TERM="xterm-256color"
-setopt CORRECT
 setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_REDUCE_BLANKS
+export TERM="xterm-256color"
 export EDITOR="nvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
@@ -78,7 +79,6 @@ export KEYTIMEOUT=1
 alias t="tmux -2 new-session -A -s"
 
 alias qkup="sudo apt update && sudo apt dist-upgrade -y && sudo apt autoremove -y"
-
 
 function venvname {
     echo "$(pwd | perl -pe "s|$HOME/||" | perl -pe 's|/|\.|g')";
@@ -112,8 +112,6 @@ function vc {
 alias vvc="vc; if [ -e requirements.txt ]; then pip install -r requirements.txt; fi"
 
 
-setopt hist_ignore_dups
-setopt hist_reduce_blanks
 
 # Configuración de FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -156,9 +154,9 @@ alias dt='(cd $HOME/.diary && nvim $(date -I).md)'
 export ENTRY_DIR="$HOME/"
 alias entry="$EDITOR .entries/$(date -Is) +'set ft=markdown'"
 
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 alias m='ncmpcpp --screen visualizer'
 

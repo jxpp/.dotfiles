@@ -68,6 +68,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'tikhomirov/vim-glsl'
 
+Plugin 'tidalcycles/vim-tidal'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -150,9 +152,6 @@ autocmd FileType html,htmldjango,css,scss,markdown,c,cpp,json,yaml,javascript se
 " Solo usa en emmet en los formatos especificados.
 let g:user_emmet_install_global = 0
 autocmd FileType html,htmldjango,css,scss,markdown EmmetInstall
-
-autocmd FileType python inoremap ' "
-autocmd FileType python inoremap " '
 
 " Opciones para tomar apuntes. En ciertos formatos automáticamente cambiará de
 " línea al llegar a las 80 columnas de texto. De resto permitirá ajustar texto
@@ -261,9 +260,9 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 
 set fo-=t
 
-set relativenumber
-highlight LineNr ctermfg=lightgrey
-set numberwidth=3
+" set relativenumber
+" highlight LineNr ctermfg=lightgrey
+" set numberwidth=3
 
 hi Visual ctermfg=black ctermbg=white
 
@@ -310,3 +309,5 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 autocmd! BufNewFile,BufRead *.vert,*.frag set ft=glsl
+
+let g:tidal_target = "terminal"

@@ -1,7 +1,7 @@
 [user]
 	name = jxpp
-	email = jesus@jxpp.eu
-	signingkey = jesus@jxpp.eu
+	email = jxpp@chigui.re
+	signingkey = jxpp@chigui.re
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore
