@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.emacs.d/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -109,10 +110,6 @@ function vc {
     source $VENV/bin/activate;
 }
 
-alias vvc="vc; if [ -e requirements.txt ]; then pip install -r requirements.txt; fi"
-
-
-
 # Configuración de FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -126,10 +123,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME"
 # Porsia
 export FZF_CTRL_R_OPTS=""
-
-# Configuración de ORACLE
-export ORACLE_HOME="/usr/lib/oracle/12.2/client64/lib/"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/oracle/12.2/client64/lib/"
 
 glab() {
     git init && git add . && git commit -a -m "Commit inicial" && git push -u git@gitlab.com:jxpp/$1.git master
@@ -154,18 +147,26 @@ alias dt='(cd $HOME/.diary && nvim $(date -I).md)'
 export ENTRY_DIR="$HOME/"
 alias entry="$EDITOR .entries/$(date -Is) +'set ft=markdown'"
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+load-pyenv () {
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+    export _PYENV_LOADED=1
+}
 
-alias m='ncmpcpp --screen visualizer'
+alias m='mpd; ncmpcpp --screen visualizer'
 
 # I hate npm
 export PATH=~/.npm-global/bin:$PATH
 
 alias gcpv='git commit -p -v'
 
-jxp() {
-    python3 $HOME/log/.scripts/jxp.py $@
-    nvim $HOME/log/$(date -I).md +PencilHard
+export VILYNX_DIR='/home/jxpp/vilynx'
+repo () {
+    if [ -z $_PYENV_LOADED ]; then
+        load-pyenv
+    fi
+    cd $VILYNX_DIR/repos/$1
+    pyenv activate $(basename $(pwd))
 }

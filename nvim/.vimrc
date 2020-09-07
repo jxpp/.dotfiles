@@ -70,6 +70,10 @@ Plugin 'tikhomirov/vim-glsl'
 
 Plugin 'tidalcycles/vim-tidal'
 
+Plugin 'tpope/vim-fireplace'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'guns/vim-clojure-static'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -147,7 +151,7 @@ set laststatus=2
 set noshowmode
 
 " En los formatos especificados solo usar dos espacios como indentación.
-autocmd FileType html,htmldjango,css,scss,markdown,c,cpp,json,yaml,javascript setlocal shiftwidth=2 tabstop=2 sts=2
+autocmd FileType html,htmldjango,css,scss,markdown,c,cpp,json,yaml,javascript,rust setlocal shiftwidth=2 tabstop=2 sts=2
 
 " Solo usa en emmet en los formatos especificados.
 let g:user_emmet_install_global = 0
@@ -180,34 +184,6 @@ set rtp+=~/.fzf
 nnoremap <leader>f :GFiles<cr>
 
 nnoremap <leader>t :Tagbar<cr>
-
-set tags=.tags
-
-" Lo siguiente es para syntastic, un correcto de sintaxis. Estas opciones son
-" todas muy buenas si lo usas. Cada vez que guardas un fichero te muestra
-" errores de sintáxis.
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['pylint']
-" let g:syntastic_enable_balloons = 1
-" let g:syntastic_mode_map = {
-"             \ "mode": "passive",
-"             \ "active_filetypes": [],
-"             \ "passive_filetypes": [] }
-
-nnoremap <Leader>h :noh <CR>
-
-nnoremap ; :
-nnoremap : ;
-
-nnoremap <S-h> ^
-nnoremap <S-l> $
 
 hi Search cterm=NONE ctermfg=16 ctermbg=lightmagenta
 
@@ -311,3 +287,13 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd! BufNewFile,BufRead *.vert,*.frag set ft=glsl
 
 let g:tidal_target = "terminal"
+
+let g:ale_fixers = {
+\    'python': [
+\        'isort',
+\        'remove_trailing_lines',
+\        'trim_whitespace'
+\    ]
+\}
+
+let &colorcolumn=join(range(121,999),",")
